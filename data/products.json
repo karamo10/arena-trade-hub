@@ -188,15 +188,6 @@
       "categorie": "mix",
       "description": "We'll be adding a description for this product shortly. You can chat with us if you have any questions about this product.",
       "instock": false
-    },
-    {
-      "id": "f558",
-      "name": "Rice",
-      "image_url": "/images/products/20250531_085537.jpg",
-      "price": 2000,
-      "categorie": "rice",
-      "description": "Lorem is a nice text place honder is and amazing...",
-      "instock": true
     }
   ]
 }
