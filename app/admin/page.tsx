@@ -26,7 +26,7 @@ export default function AdminDashboard() {
       return;
     };
 
-    // / fetch products from backend
+    // / fetching the products from backend
   const fetchProducts = async () => {
     try {
       const res = await fetch('http://localhost:5000/products');
@@ -112,7 +112,7 @@ export default function AdminDashboard() {
     }
 
     const updated = await res.json();
-    // Replace updated product in state
+   
     setProducts(products.map((p) => (p.id === updated.id ? updated : p)));
 
     setEditingProduct(null); 
@@ -212,7 +212,7 @@ export default function AdminDashboard() {
             instock
           </label>
         </div>
-        {/* Button */}
+        
         <button
           className="bg-blue-700 w-full text-white px-4 py-2 rounded hover:bg-blue-800 cursor-pointer transition-all"
           onClick={editingProduct ? updateProduct : addProduct}
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
           {editingProduct ? 'Update Product' : 'Add Product'}
         </button>
       </div>
-      {/* All products */}
+     
       <h3 className="text-lg font-semibold mb-4">All Products</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((product) => (
@@ -236,7 +236,7 @@ export default function AdminDashboard() {
         
         ))}
       </div>
-      {/* The logout button */}
+      
       <div className="flex items-center justify-between max-w-[50%] mx-auto">
         <button
           onClick={() => {
@@ -247,7 +247,7 @@ export default function AdminDashboard() {
         >
           Logout
         </button>
-        {/* navigation button to delete product page */}
+        
         <Link
           href="/admin/delete"
           className="text-blue-500 underline inline-block hover:text-blue-900"

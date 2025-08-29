@@ -20,7 +20,6 @@ export default function CartPage() {
     setCart(storedCart);
   }, []);
 
-  // Update quantity handler
   const updateQuantity = (id: string, quantity: number) => {
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
@@ -29,7 +28,6 @@ export default function CartPage() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  // Delete product
   const removeItem = (id: string) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
@@ -38,34 +36,41 @@ export default function CartPage() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-   // WhatsApp handler
-  // WhatsApp handler
-const handleWhatsAppOrder = () => {
-  const phoneNumber = '2203379597'; 
-  let message = '🛒 *New Order*\n\n';
+  const handleWhatsAppOrder = () => {
+    const phoneNumber = '2203379597';
+    let message = '🛒 *New Order*\n\n';
 
-  cart.forEach((item, i) => {
-    message += `${i + 1}. ${item.name}\n   Qty: ${item.quantity}\n   Price: ${item.price} GMD\n   Subtotal: ${item.price * item.quantity} GMD\n   🔗 Image: ${item.image_url}\n\n`;
-  });
+    cart.forEach((item, i) => {
+      message += `${i + 1}. ${item.name}\n   Qty: ${item.quantity}\n   Price: ${
+        item.price
+      } GMD\n   Subtotal: ${item.price * item.quantity} GMD\n   🔗 Image: ${
+        item.image_url
+      }\n\n`;
+    });
 
-  message += `💰 *Total: ${total} GMD*`;
+    message += `💰 *Total: ${total} GMD*`;
 
-  const encodedMsg = encodeURIComponent(message);
+    const encodedMsg = encodeURIComponent(message);
 
-  const url = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
 
-  const appUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMsg}`;
+    const appUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMsg}`;
 
-  const newWindow = window.open(url, '_blank');
-  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-    window.location.href = appUrl;
-  }
-};
-
+    const newWindow = window.open(url, '_blank');
+    if (
+      !newWindow ||
+      newWindow.closed ||
+      typeof newWindow.closed === 'undefined'
+    ) {
+      window.location.href = appUrl;
+    }
+  };
 
   return (
     <section className="p-6 min-h-screen">
-      <h2 className="text-xl font-semibold text-center mb-[1.5rem]">Your Cart</h2>
+      <h2 className="text-xl font-semibold text-center mb-[1.5rem]">
+        Your Cart
+      </h2>
       {cart.length === 0 ? (
         <p className="text-center">No items in cart.</p>
       ) : (
@@ -86,9 +91,10 @@ const handleWhatsAppOrder = () => {
                 />
                 <div>
                   <p className="text-xs md:text-sm font-normal">{item.name}</p>
-                  <p className="text-xs md:text-sm font-normal">Price: {item.price} GMD</p>
+                  <p className="text-xs md:text-sm font-normal">
+                    Price: {item.price} GMD
+                  </p>
 
-                  {/* Quantity Input */}
                   <div className="flex items-center gap-2 mt-1">
                     <label className="text-xs md:text-sm">Qty:</label>
                     <input
@@ -104,7 +110,6 @@ const handleWhatsAppOrder = () => {
                 </div>
               </div>
 
-              {/* Total per item + delete btn */}
               <div className="flex flex-col items-end">
                 <p className="text-xs md:text-sm font-medium md:font-semibold mb-2">
                   {item.price * item.quantity} GMD
@@ -116,9 +121,10 @@ const handleWhatsAppOrder = () => {
               </div>
             </div>
           ))}
-            <h2 className="text-sm md:text-xl font-medium md:font-semibold mt-4">Total: {total} GMD</h2>
-            
-            {/* WhatsApp Buy Button */}
+          <h2 className="text-sm md:text-xl font-medium md:font-semibold mt-4">
+            Total: {total} GMD
+          </h2>
+
           <button
             onClick={handleWhatsAppOrder}
             className="w-full py-2 mt-3 bg-green-500 hover:bg-green-600 text-white rounded-lg text-sm md:text-base transition-all"
