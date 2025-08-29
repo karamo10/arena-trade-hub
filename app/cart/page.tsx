@@ -37,7 +37,7 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleWhatsAppOrder = () => {
-    const phoneNumber = '2203379597';
+    const phoneNumber = '2207194940';
     let message = '🛒 *New Order*\n\n';
 
     cart.forEach((item, i) => {
