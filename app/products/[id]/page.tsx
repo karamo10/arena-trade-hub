@@ -11,13 +11,14 @@ export async function generateStaticParams() {
   }));
 }
 
-interface ProductPageProps {
+// ⬇️ renamed to avoid clash with Next.js
+interface ProductPageComponentProps {
   params: {
     id: string;
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageComponentProps) {
   const product = products.find((p) => p.id.toString() === params.id);
 
   if (!product) {
