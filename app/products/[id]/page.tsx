@@ -2,16 +2,22 @@ import { Product } from '@/data/definition';
 import AddToCartButton from '@/components/button/add-to-cart-';
 
 async function getProduct(id: string): Promise<Product> {
-  const res = await fetch(`http://localhost:5000/products/${id}`);
+  const res = await fetch(`http://localhost:5000/products/${id}`, {
+    cache: 'no-store',
+  });
   if (!res.ok) throw new Error('Failed to fetch product');
   return res.json();
 }
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
 export default async function ProductPage({
   params,
-}: {
-  params: { id: string };
-}) {
+}: PageProps) {
   const product = await getProduct(params.id);
 
   return (
