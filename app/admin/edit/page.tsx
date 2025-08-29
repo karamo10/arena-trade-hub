@@ -30,30 +30,30 @@ export default function EditProduct() {
     fetchProducts();
   });
 
-  const updateProduct = async () => {
-    if (!editingProduct) return;
+  // const updateProduct = async () => {
+  //   if (!editingProduct) return;
 
-    const res = await fetch(
-      `http://localhost:5000/products/${editingProduct.id}`,
-      {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(editingProduct),
-      }
-    );
+  //   const res = await fetch(
+  //     `http://localhost:5000/products/${editingProduct.id}`,
+  //     {
+  //       method: 'PUT',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(editingProduct),
+  //     }
+  //   );
 
-    if (!res.ok) {
-      alert('Failed to update product');
-      return;
-    }
+  //   if (!res.ok) {
+  //     alert('Failed to update product');
+  //     return;
+  //   }
 
-    const updated = await res.json();
-    // Replace updated product in state
-    setProducts(products.map((p) => (p.id === updated.id ? updated : p)));
+  //   const updated = await res.json();
+  //   // Replace updated product in state
+  //   setProducts(products.map((p) => (p.id === updated.id ? updated : p)));
 
-    setEditingProduct(null);
-    alert('Product updated');
-  };
+  //   setEditingProduct(null);
+  //   alert('Product updated');
+  // };
 
   return (
     <section className="min-h-screen px-[80px]">
@@ -75,7 +75,7 @@ export default function EditProduct() {
       </div>
       <div className="grid grid-cols-4 gap-4">
         {products.map((product) => (
-          <div>
+          <div key={product.id}>
             <ProductCard product={product} />
             <button onClick={() => setEditingProduct(product)}>edit</button>
           </div>

@@ -1,5 +1,6 @@
 'use client';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface Product {
@@ -50,9 +51,12 @@ export default function CartPage() {
               className="flex items-center justify-between border-b p-3 rounded"
             >
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src={item.image_url}
                   alt={item.name}
+                  width={64}
+                  height={64}
+                  quality={100}
                   className="w-16 h-16 object-cover rounded"
                 />
                 <div>

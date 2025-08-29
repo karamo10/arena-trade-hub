@@ -1,8 +1,8 @@
-
+import Image from 'next/image';
 
 export default function AboutUs() {
   return (
-    <section className=" w-full grid grid-cols-1 md:grid-cols-2 mb-3">
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 mb-3">
       <div className="bg-blue-950/90 flex items-center justify-center px-3 lg:px-0 h-[300px] md:h-[350px]">
         <div className="max-w-[450px] mx-auto">
           <h2 className="about text-xl font-medium mb-1.5">
@@ -15,20 +15,16 @@ export default function AboutUs() {
           </p>
         </div>
       </div>
-      <div className="h-[300px] md:h-[350px]">
-        <img
+      <div className="h-[300px] md:h-[350px] relative">
+        <Image
           src={'/images/products/secure.jpg'}
           alt="security image"
-          className="object-cover w-full h-full"
+          fill
+          quality={100}
+          className="object-cover"
         />
       </div>
-      <div className="h-[300px] md:h-[350px]">
-        <img
-          src={'/images/products/secure.jpg'}
-          alt="security image"
-          className="object-cover w-full h-full"
-        />
-      </div>
+
       <div className="bg-neutral-50 flex items-center justify-center px-3 lg:px-0 h-[300px] md:h-[350px]">
         <div className="max-w-[450px] mx-auto">
           <h2 className="text-xl font-medium mb-1.5">
@@ -41,21 +37,33 @@ export default function AboutUs() {
           </p>
         </div>
       </div>
-
+      <div className="h-[300px] md:h-[350px] relative">
+        <Image
+          src={'/images/products/secure.jpg'}
+          alt="security image"
+          fill
+          quality={100}
+          className="object-cover"
+        />
+      </div>
       <div className="bg-blue-950/90 flex items-center justify-center px-3 lg:px-0 h-[300px] md:h-[350px]">
         <div className="max-w-[450px] mx-auto">
-          <h2 className="about text-xl font-medium mb-1.5">Top Customer Service</h2>
+          <h2 className="about text-xl font-medium mb-1.5">
+            Top Customer Service
+          </h2>
           <p className="about text-xs w-[85%]">
             Call us, visit us online our support team is available around the
             clock to assist you with any inquiries or issues.
           </p>
         </div>
       </div>
-      <div className="h-[300px] md:h-[350px]">
-        <img
+      <div className="h-[300px] md:h-[350px] relative">
+        <Image
           src={'/images/products/secure.jpg'}
           alt="security image"
-          className="object-cover w-full h-full"
+          fill
+          quality={100}
+          className="object-cover"
         />
       </div>
     </section>

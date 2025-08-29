@@ -1,18 +1,22 @@
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative w-fulloverflow-hidden h-[400px]">
-      <img
+    <section className="relative w-full overflow-hidden h-[400px]">
+      <Image
         src="/images/hero-img.jpg"
         alt="hero image"
-        className="absolute hidden md:block w-full h-full object-cover inset-0"
+        fill
+        priority
+        quality={100}
+        className="object-cover inset-0"
       />
        {/* <img
         src="/images/heroimage.jpg"
         alt="hero image"
-        className="absolute block md:hidden w-full h-full object-cover inset-0"
+        className="absolute block md:hidden w-full h-full object-cover inset-0 aspect-[20/6] "
       /> */}
       <div className="absolute inset-0 bg-black/25 flex items-center">
         <div className="px-5 md:px-[100px] space-y-5">

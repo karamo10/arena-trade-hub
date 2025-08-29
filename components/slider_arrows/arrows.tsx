@@ -2,9 +2,17 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
 
-function NextArrow(props: any) {
-  const { className, style, onClick, currentSlide, slideCount } = props;
-  const disabled = currentSlide === slideCount - 1;
+interface ArrowProps {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  currentSlide?: number;
+  slideCount?: number;
+
+}
+
+function NextArrow({className, style, onClick, currentSlide, slideCount}: ArrowProps) {
+  const disabled = currentSlide === (slideCount ?? 0) - 1
 
   return (
     <button
@@ -19,9 +27,10 @@ function NextArrow(props: any) {
   );
 };
 
-function PrevArrow(props: any) {
-  const { className, style, onClick, currentSlide } = props;
-  const disabled = currentSlide === 0; 
+
+
+function PrevArrow({className, style, onClick, currentSlide, slideCount}: ArrowProps) {
+  const disabled = currentSlide === (slideCount ?? 0) - 1;
 
   return (
     <button

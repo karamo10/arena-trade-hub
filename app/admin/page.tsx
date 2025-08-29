@@ -224,7 +224,7 @@ export default function AdminDashboard() {
       <h3 className="text-lg font-semibold mb-4">All Products</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((product) => (
-          <div>
+          <div key={product.id}>
             <ProductCard product={product} />
           <button
               className="mt-2 bg-blue-600 text-white px-3 py-0 rounded text-xs cursor-pointer"
