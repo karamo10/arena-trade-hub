@@ -1,4 +1,4 @@
-import data from '@/data/products.json'; 
+import data from '@/data/products.json';
 import { Product } from '@/data/definition';
 import AddToCartButton from '@/components/button/add-to-cart-';
 
@@ -12,13 +12,16 @@ export async function generateStaticParams() {
 }
 
 interface ProductPageComponentProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: ProductPageComponentProps) {
-  const product = products.find((p) => p.id.toString() === params.id);
+  // 👇 Await the params because it's now typed as Promise
+  const { id } = await params;
+
+  const product = products.find((p) => p.id.toString() === id);
 
   if (!product) {
     return (
