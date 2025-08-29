@@ -197,15 +197,6 @@
       "categorie": "rice",
       "description": "Lorem is a nice text place honder is and amazing...",
       "instock": true
-    },
-    {
-      "id": "cd28",
-      "name": "beans",
-      "image_url": "/images/products/img3.jpg",
-      "price": 300,
-      "categorie": "oil",
-      "description": "",
-      "instock": true
     }
   ]
 }

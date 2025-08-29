@@ -1,5 +1,6 @@
 import { Product } from '@/data/definition';
 import AddToCartButton from '@/components/button/add-to-cart-';
+import type { NextPage } from "next";
 
 async function getProduct(id: string): Promise<Product> {
   const res = await fetch(`http://localhost:5000/products/${id}`, {
@@ -9,16 +10,15 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default async function ProductPage({
-  params,
-}: PageProps) {
+
+type Params = {
+  id: string;
+};
+
+const ProductPage: NextPage<{ params: Params }> = async ({ params }) => {
   const product = await getProduct(params.id);
+
 
   return (
     <div className="min-h-screen flex justify-center py-4 relative">
@@ -49,3 +49,5 @@ export default async function ProductPage({
     </div>
   );
 }
+
+export default ProductPage;
