@@ -2,35 +2,18 @@ import data from '@/data/products.json';
 import { Product } from '@/data/definition';
 import AddToCartButton from '@/components/button/add-to-cart-';
 
-const products: Product[] = data.products;
-
-// Generate static params from products
-export async function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id.toString(),
-  }));
+interface ProductPageProps {
+  params: Promise<{ id: string }>; // 👈 make params a Promise
 }
 
-interface ProductPageComponentProps {
-  params: Promise<{
-    id: string;
-  }>;
-}
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params; // 👈 await here
 
-export default async function ProductPage({ params }: ProductPageComponentProps) {
-  // 👇 Await the params because it's now typed as Promise
-  const { id } = await params;
+  const res = await fetch(`http://localhost:5000/products/${id}`);
+  if (!res.ok) throw new Error("Failed to fetch product");
 
-  const product = products.find((p) => p.id.toString() === id);
-
-  if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-red-500">Product not found</p>
-      </div>
-    );
-  }
-
+  const product: Product = await res.json();
+ 
   return (
     <div className="min-h-screen flex justify-center py-4 relative">
       <div className="flex flex-col gap-2 items-center md:flex-row h-[400px] bg-red-800">
