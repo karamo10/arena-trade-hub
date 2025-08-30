@@ -10,14 +10,18 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
-interface pageProps {
-  params: Record<string, string>;
-}
+type PageParams = Promise<{ id: string }>;
 
-export default async function ProductPage({
-  params,
-}: pageProps) {
-  const product = await getProduct(params.id);
+// interface pageProps {
+//   params: Record<string, string>;
+// }
+
+export default async function ProductPage(paramsPromise: PageParams) {
+  const { id } = await paramsPromise;
+  const product = await getProduct(id);
+
+  if (!product) return notFound();
+
   return (
     <div className="min-h-screen flex justify-center py-4 relative">
    
