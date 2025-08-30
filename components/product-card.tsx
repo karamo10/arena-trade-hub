@@ -14,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
           alt={product.name}
           fill
           quality={100}
-          className="object-cover"
+          className="object-cover rounded"
         />
       </div>
       <div className="text-center px-2">

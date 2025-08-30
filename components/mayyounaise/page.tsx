@@ -10,7 +10,7 @@ export default function Mayonnaises() {
   const [mayonnaises, setMayonnaises] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products?categorie=mayonnaises')
+    fetch('https://arena-json-server.onrender.com/products?categorie=mayonnaises')
       .then((res) => res.json())
       .then((data) => setMayonnaises(data));
   }, []);

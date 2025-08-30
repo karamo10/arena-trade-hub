@@ -11,7 +11,7 @@ export default function VegOil() {
   const [oils, setOils] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products?categorie=oil')
+    fetch('https://arena-json-server.onrender.com/products?categorie=oil')
       .then((res) => res.json())
       .then((data) => setOils(data));
   }, []);

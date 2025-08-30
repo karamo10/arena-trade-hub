@@ -19,13 +19,13 @@ export default function AdminDelete() {
   }, [router]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch("https://arena-json-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-
-  const deleteProduct = async (id: number) => {
-    await fetch(`http://localhost:5000/products/${id}`, { method: 'DELETE' });
+// http://localhost:5000/products/${id}
+  const deleteProduct = async (id: string) => {
+    await fetch(`https://arena-json-server.onrender.com/products/${id}`, { method: 'DELETE' });
     setProducts(products.filter((p) => p.id !== id));
   };
 

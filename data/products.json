@@ -175,7 +175,7 @@
       "id": "20",
       "name": "Fresh Potato - 1kg",
       "image_url": "/images/products/potatoe-1kg.jpeg",
-      "price": 2.25,
+      "price": 500098,
       "categorie": "mix",
       "description": "We'll be adding a description for this product shortly. You can chat with us if you have any questions about this product.",
       "instock": true
@@ -188,6 +188,15 @@
       "categorie": "mix",
       "description": "We'll be adding a description for this product shortly. You can chat with us if you have any questions about this product.",
       "instock": false
+    },
+    {
+      "id": "165f",
+      "name": "karaa",
+      "image_url": "/images/products/IMG-20241017-WA0011.jpg",
+      "price": 500,
+      "categorie": "rice",
+      "description": "",
+      "instock": true
     }
   ]
 }

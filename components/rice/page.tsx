@@ -11,7 +11,7 @@ export default function Rice() {
   const [rices, setRice] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products?categorie=rice')
+    fetch('https://arena-json-server.onrender.com/products?categorie=rice')
       .then((res) => res.json())
       .then((data) => setRice(data));
   }, []);
