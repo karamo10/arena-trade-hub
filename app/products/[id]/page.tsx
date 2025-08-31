@@ -3,30 +3,23 @@ import AddToCartButton from '@/components/button/add-to-cart-';
 import { notFound } from 'next/navigation';
 
 async function getProduct(id: string): Promise<Product> {
-  const res = await fetch(`https://arena-json-server.onrender.com/products/${id}`);
-  if (!res.ok) (
-    notFound()
-  )
+  const res = await fetch(
+    `https://arena-json-server.onrender.com/products/${id}`
+  );
+  if (!res.ok) notFound();
   return res.json();
 }
 
-type PageParams = Promise<{ id: string }>;
-
-// interface pageProps {
-//   params: Record<string, string>;
-// }
-
-export default async function ProductPage(paramsPromise: PageParams) {
-  const { id } = await paramsPromise;
-  const product = await getProduct(id);
-
-  if (!product) return notFound();
+export default async function ProductPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const product = await getProduct(params.id);
 
   return (
     <div className="min-h-screen flex justify-center py-4 relative">
-   
       <div className="flex flex-col gap-2 items-center md:flex-row h-[400px] bg-red800">
-        
         <img
           src={product.image_url}
           alt={product.name}
