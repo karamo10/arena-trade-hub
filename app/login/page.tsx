@@ -7,6 +7,7 @@ export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
@@ -15,6 +16,7 @@ export default function LoginPage() {
             router.push('/admin');
         } else {
             alert("Invalid credentials");
+            setErrorMessage('invalid error message');
         }
     };
 
@@ -27,7 +29,7 @@ export default function LoginPage() {
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="p-2 w-full mb-4 rounded bg-white outline outline-blue-950/95 placeholder:text-xs md:placeholder:text-sm"
+                    className="p-2 w-full mb-4 rounded bg-white outline outline-blue-950/95"
                 />
                 <input type="password"
                     placeholder="password"
@@ -35,6 +37,7 @@ export default function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="p-2 w-full mb-4 rounded bg-white outline outline-blue-950/95"
                 />
+                <p className="text-red-500">{errorMessage}</p>
                 <button type="submit" className="bg-blue-700 w-full text-white px-4 py-2 rounded hover:bg-blue-800 cursor-pointer transition-all">Login</button>
             </form>
         </div>

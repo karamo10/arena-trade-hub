@@ -47,7 +47,7 @@ export default function Rice() {
   return (
     <section className="py-8 px-[80px] max-sm:px-4">
       <h2 className="text-sm font-medium mb-3">Rice</h2>
-      <Slider {...settings} className="">
+      <Slider {...settings} className="w-[90%] sm:w-[100%] mx-auto">
         {rices.map((rice) => (
           <div key={rice.id} className="px-1">
             <ProductCard product={rice} />

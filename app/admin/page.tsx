@@ -19,6 +19,7 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showModalMessage, setShowModalMessage] = useState('');
 
   useEffect(() => {
     const isAdmin = localStorage.getItem('isAdmin');
@@ -53,7 +54,7 @@ export default function AdminDashboard() {
       !newProduct.description
     ) {
       // alert('Please fill in all fields before adding a product!');
-      // setShowModalMessage("Hello");
+      setShowModalMessage("filled error");
       setShowModal(true);
       return;
     }

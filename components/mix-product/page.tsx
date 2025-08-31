@@ -42,7 +42,7 @@ export default function MixProducts() {
   return (
     <section className="py-8 px-[80px] max-sm:px-4">
       <h2 className="text-sm font-medium mb-3">Mixed Items</h2>
-      <Slider {...settings} className="">
+      <Slider {...settings} className="w-[90%] sm:w-[100%] mx-auto">
         {items.map((item) => (
           <div key={item.id} className="px-1">
             <ProductCard product={item} />

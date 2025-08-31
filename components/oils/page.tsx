@@ -48,7 +48,7 @@ export default function VegOil() {
   return (
     <section className="py-8 px-[80px] max-sm:px-4">
       <h2 className="text-sm font-medium mb-3">Veg Oils</h2>
-      <Slider {...settings} className=" relative">
+      <Slider {...settings} className="relative w-[90%] sm:w-[100%] mx-auto">
         {oils.map((oil) => (
           <div key={oil.id} className="px-1">
             <ProductCard product={oil} />
