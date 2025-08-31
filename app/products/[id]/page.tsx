@@ -10,6 +10,11 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
+// export default async function ProductPage({props}: {
+//   params: { id: string };
+// })
+// What is causing the missedmatch, I compared the function signature with the latest Next.js documentation. I realized that the params prop is now a Promise (props: { params: Promise<{ id: string }>; }), not a plain object.
+
 export default async function ProductPage(props: {
   params: Promise<{ id: string }>;
 }) {
@@ -18,10 +23,8 @@ export default async function ProductPage(props: {
 
   const product = await getProduct(id);
 
-  // const product = await getProduct(params.id);
-
   return (
-    <div className="min-h-screen flex justify-center py-4 relative">
+    <div className="flex justify-center py-4 relative">
       <div className="flex flex-col gap-2 items-center md:flex-row h-[400px] bg-red800">
         <img
           src={product.image_url}

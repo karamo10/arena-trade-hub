@@ -138,7 +138,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="p-6 min-h-screen px-[80px] max-sm:px-4">
+    <div className="p-6 px-[80px] max-sm:px-4">
        <div className="flex flex-col sm:flex-row items-center justify-between max-w-[60%] mx-auto bg-blue-950/85 p-2 rounded mb-8">
         <button
           onClick={() => {

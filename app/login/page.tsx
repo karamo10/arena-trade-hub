@@ -19,7 +19,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="p-6 min-h-screen items-center justify-center">
+        <div className="p-6 items-center justify-center">
             <h2 className="text-xl font-semibold text-center mb-[1.5rem]">Admin Login</h2>
             <form onSubmit={handleLogin} className="max-w-80 mx-auto py-4 px-4 bg-blue-950/95 rounded">
                 <h6 className="mb-4 text-lg text-white font-medium">Admin Login</h6>

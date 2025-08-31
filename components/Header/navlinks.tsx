@@ -4,7 +4,7 @@ import { HomeIcon, UserIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 
 const links = [
-    { name: 'Products', href: '/products', icon: HomeIcon },
+    { name: 'Products', href: '/productpage', icon: HomeIcon },
      {name: 'Partners', href: '/partners', icon: UserIcon},
 ]
 

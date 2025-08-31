@@ -30,7 +30,7 @@ export default function AdminDelete() {
   };
 
   return (
-    <div className="p-6 min-h-screen">
+    <div className="p-6">
       <h2 className="text-xl font-semibold text-center mb-[1.5rem]">Delete Products</h2>
 
       <div className="flex items-center justify-center">

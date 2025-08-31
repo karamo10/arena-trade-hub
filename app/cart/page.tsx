@@ -67,7 +67,7 @@ export default function CartPage() {
   };
 
   return (
-    <section className="p-6 min-h-screen">
+    <section className="p-6">
       <h2 className="text-xl font-semibold text-center mb-[1.5rem]">
         Your Cart
       </h2>
