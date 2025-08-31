@@ -10,12 +10,15 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { id: string };
+export default async function ProductPage(props: {
+  params: Promise<{ id: string }>;
 }) {
-  const product = await getProduct(params.id);
+  const params = await props.params;
+  const id = params.id;
+
+  const product = await getProduct(id);
+
+  // const product = await getProduct(params.id);
 
   return (
     <div className="min-h-screen flex justify-center py-4 relative">
