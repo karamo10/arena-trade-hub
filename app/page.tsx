@@ -1,27 +1,29 @@
 import Hero from '@/components/hero/hero';
 import AboutUs from '@/components/about-us/about';
-import Rice from '@/components/rice/page';
-import VegOil from '@/components/oils/page';
-import Mayonnaises from '@/components/mayyounaise/page';
-import MixProducts from '@/components/mix-product/page';
+// import Rice from '@/components/rice/rices';
+import RicePage from '@/components/rice/rice';
+import OilsPage from '@/components/oils/oil';
+import MayyounaisesPage from '@/components/mayyounaise/mayyounaises';
+import MixProductPage from '@/components/mix-product/mix-products';
 import { Suspense } from 'react';
+import { RiceSkeleton, MayyounaiseSkeleton } from '@/components/skeletons/skeletons';
 
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Suspense fallback={<h1 className='text-red text-6xl'>Loading...</h1>}>
-        <Rice />
+      <Suspense fallback={<RiceSkeleton/>}>
+        <RicePage />
       </Suspense>
-      <Suspense fallback={<h1 className='text-red text-xl'>Loading...</h1>}>
-        <VegOil />
+      <Suspense fallback={<RiceSkeleton/>}>
+        <OilsPage />
       </Suspense>
-      <Suspense fallback={<h1 className='text-red text-xl'>Loading...</h1>}>
-        <Mayonnaises />
+      <Suspense fallback={<MayyounaiseSkeleton/>}>
+        <MayyounaisesPage />
       </Suspense>
-      <Suspense fallback={<h1 className='text-red text-xl'>Loading...</h1>}>
-        <MixProducts />
+      <Suspense fallback={<RiceSkeleton/>}>
+        <MixProductPage />
       </Suspense> 
       <AboutUs />
     </main>

@@ -1,4 +1,4 @@
-import { Product } from '@/data/definition';
+import { Product } from '@/types/definition';
 import AddToCartButton from '@/components/button/add-to-cart-';
 import { notFound } from 'next/navigation';
 

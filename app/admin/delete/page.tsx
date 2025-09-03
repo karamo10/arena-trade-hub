@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Product } from '@/data/definition';
+import { Product } from '@/types/definition';
 import { useRouter } from 'next/navigation';
 // import { TrashIcon } from '@heroicons/react/16/outline';
 import Link from 'next/link';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import ProductCard from '@/components/product-card';
 
 export default function AdminDelete() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -41,20 +42,15 @@ export default function AdminDelete() {
           Back to Add Products
         </Link>
       </div>
-      <ul className="max-w-[50%] mx-auto">
+      <ul className="max-w-[80%] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {products.map((p) => (
-          <li
-            key={p.id}
-            className="flex justify-between items-center border-b py-2 mb-3"
-          >
-            <span>
-              {p.name} - GMD{p.price} ({p.categorie})
-            </span>
+          <div className="">
+            <ProductCard product={p} />
             <TrashIcon
               className="w-6 h-6 text-red-700 cursor-pointer"
               onClick={() => deleteProduct(p.id)}
             />
-          </li>
+          </div>
         ))}
       </ul>
     </div>

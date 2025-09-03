@@ -100,7 +100,7 @@ export default function CartPage() {
                     <input
                       type="number"
                       min={1}
-                      value={item.quantity}
+                      // value={item.quantity}
                       onChange={(e) =>
                         updateQuantity(item.id, parseInt(e.target.value) || 1)
                       }

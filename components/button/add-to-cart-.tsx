@@ -1,6 +1,6 @@
 'use client';
 
-import { Product } from '@/data/definition';
+import { Product } from '@/types/definition';
 import { useState } from 'react';
 
 export default function AddToCartButton({ product }: { product: Product }) {

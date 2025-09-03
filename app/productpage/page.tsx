@@ -1,7 +1,7 @@
 export default function Products() {
   return (
-    <section className="h-54 min-h-screen">
-      <div className="w-[100%] sm:w-[70%] m-auto h-[500px] flex items-center justify-center flex-col">
+    <section>
+      <div className="w-[100%] sm:w-[70%] m-auto h-[250px] flex items-center justify-center flex-col">
         <h1 className="text-black text-sm sm:text-xl font-extrabold pt-16">
           Products page coming soon...
         </h1>

@@ -1,4 +1,4 @@
-import { Product } from '@/data/definition';
+import { Product } from '@/types/definition';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -6,7 +6,7 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="flex items-center flex-col md:flex-row py-1 bg-white shadow-lg rounded relative"
+      className="flex items-center flex-col md:flex-row py-1 bg-white shadow-sm rounded relative"
     >
       <div className="relative w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded">
         <Image

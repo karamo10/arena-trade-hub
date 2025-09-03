@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Product } from '@/data/definition';
+import { Product } from '@/types/definition';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ProductCard from '@/components/product-card';
@@ -78,38 +78,67 @@ export default function AdminDashboard() {
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.length) return;
-    const file = e.target.files[0];
+  if (!e.target.files?.length) return;
+  const file = e.target.files[0];
 
-    try {
-      const fd = new FormData();
-      fd.append('file', file);
+  const fd = new FormData();
+  fd.append('file', file);
 
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: fd,
-      });
+  try {
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      body: fd,
+    });
 
-      if (!res.ok) {
-        throw new Error('File upload failed');
-      }
-      const data = await res.json();
+    if (!res.ok) throw new Error('Upload failed');
 
-      if (editingProduct) {
-        setEditingProduct((prev) =>
-          prev ? { ...prev, image_url: data.url } : null
-        );
-      } else {
-        setNewProduct((prev) => ({
-          ...prev,
-          image_url: data.url,
-        }));
-      }
-    } catch (err) {
-      console.error('upload error:', err);
-      alert('failed to upload image. Please try again');
+    const data = await res.json();
+
+    if (editingProduct) {
+      setEditingProduct((prev) => prev ? { ...prev, image_url: data.url } : null);
+    } else {
+      setNewProduct((prev) => ({ ...prev, image_url: data.url }));
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert('File upload failed. Try again.');
+  }
+};
+
+
+  // const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (!e.target.files?.length) return;
+  //   const file = e.target.files[0];
+
+  //   try {
+  //     const fd = new FormData();
+  //     fd.append('file', file);
+
+  //     const res = await fetch('/api/upload', {
+  //       method: 'POST',
+  //       body: fd,
+  //     });
+
+  //     if (!res.ok) {
+  //       throw new Error('File upload failed');
+  //     }
+  //     const data = await res.json();
+
+  //     if (editingProduct) {
+  //       setEditingProduct((prev) =>
+  //         prev ? { ...prev, image_url: data.url } : null
+  //       );
+  //     } else {
+  //       setNewProduct((prev) => ({
+  //         ...prev,
+  //         image_url: data.url,
+  //       }));
+  //     }
+  //   } catch (err) {
+  //     console.error('upload error:', err);
+  //     alert('failed to upload image. Please try again');
+  //   }
+  // };
 
   // Updating the product
   const updateProduct = async () => {
@@ -134,8 +163,8 @@ export default function AdminDashboard() {
     setProducts(products.map((p) => (p.id === updated.id ? updated : p)));
 
     setEditingProduct(null);
-    // alert('Product updated');
-    setShowModal(true);
+    alert('Product updated');
+    // setShowModal(true);
   };
 
   return (
@@ -198,22 +227,7 @@ export default function AdminDashboard() {
               : setNewProduct({ ...newProduct, price: Number(e.target.value) })
           }
         />
-        {/* <input
-          type="text"
-          placeholder="product categories"
-          className="p-2 w-full mb-4 rounded bg-white outline outline-blue-950/95 placeholder:text-xs md:placeholder:text-sm"
-          value={
-            editingProduct ? editingProduct.categorie : newProduct.categorie
-          }
-          onChange={(e) =>
-            editingProduct
-              ? setEditingProduct({
-                  ...editingProduct,
-                  categorie: e.target.value,
-                })
-              : setNewProduct({ ...newProduct, categorie: e.target.value })
-          }
-        /> */}
+   
         <select
           className="p-2 w-full mb-4 rounded bg-white outline outline-blue-950/95 placeholder:text-xs md:placeholder:text-sm"
           value={

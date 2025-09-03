@@ -35,6 +35,11 @@ p {
   color: #ffffff;
 }
 
+.error {
+  color: #fb2c36;
+}
+
+
 @media (max-width: 769px) {
   h1 {
     font-size: 25px;
