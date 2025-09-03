@@ -77,33 +77,40 @@ export default function AdminDashboard() {
     });
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  
+const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   if (!e.target.files?.length) return;
   const file = e.target.files[0];
 
   const fd = new FormData();
-  fd.append('file', file);
+  fd.append("file", file);
+  fd.append("upload_preset", "cloudinary-with-nextjs-app-routing"); // 👈 from Cloudinary dashboard
+  fd.append("folder", "cloudinary_with_nextjs_app_routing"); // 👈 optional folder in Cloudinary
 
   try {
-    const res = await fetch('/api/upload', {
-      method: 'POST',
+    const res = await fetch("https://api.cloudinary.com/v1_1/dijacc9pp/image/upload", {
+      method: "POST",
       body: fd,
     });
 
-    if (!res.ok) throw new Error('Upload failed');
+    if (!res.ok) throw new Error("Upload failed");
 
     const data = await res.json();
 
+    // Get Cloudinary URL
+    const imageUrl = data.secure_url;
+
     if (editingProduct) {
-      setEditingProduct((prev) => prev ? { ...prev, image_url: data.url } : null);
+      setEditingProduct(prev => prev ? { ...prev, image_url: imageUrl } : null);
     } else {
-      setNewProduct((prev) => ({ ...prev, image_url: data.url }));
+      setNewProduct(prev => ({ ...prev, image_url: imageUrl }));
     }
   } catch (err) {
-    console.error(err);
-    alert('File upload failed. Try again.');
+    console.error("Upload error:", err);
+    alert("Failed to upload image");
   }
 };
+
 
 
   // const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
