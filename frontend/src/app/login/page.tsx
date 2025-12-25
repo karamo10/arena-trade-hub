@@ -21,11 +21,16 @@ export default function LoginPage() {
     setUserLogging(true);
 
     try {
-      const response = await login(form.email, form.password);
+      const res = await login(form.email, form.password);
       // Saving the token and user to localstorage
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify(response.user))
-      router.push('/admin');
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('user', JSON.stringify(res.user))
+
+      if (res.user.role === 'admin') {
+        router.push('/admin');
+      } else {
+        router.push('/profile');
+      }
       // router.push('/')
     } catch (err: any) {
       console.error(err);

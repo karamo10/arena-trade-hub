@@ -1,13 +1,18 @@
+'use client';
+
 import { Product } from '@/types/product-data-types';
-import Link from 'next/link';
+import { TrashIcon } from '@heroicons/react/16/solid';
 import Image from 'next/image';
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function DeleteProductCard({
+  product,
+  onDelete,
+}: {
+  product: Product;
+  onDelete: () => void;
+}) {
   return (
-    <Link
-      href={`/products/${product.slug}`}
-      className="flex items-center flex-col md:flex-row py-1 bg-white shadow-sm rounded relative"
-    >
+    <div className="flex items-center flex-col md:flex-row py-1 shadow-sm rounded relative">
       <div className="relative w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded">
         <Image
           src={product.image_url}
@@ -32,6 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
       >
         {product.instock ? '' : '*out of stock'}
       </span>
-    </Link>
+      <TrashIcon onClick={onDelete} className="w-6 h-6 absolute top-0 cursor-pointer text-red-400 hover:text-red-500" />
+    </div>
   );
 }

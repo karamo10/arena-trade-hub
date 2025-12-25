@@ -3,12 +3,6 @@
 import { useState } from "react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/16/solid";
 
-// type PasswordInputProps = {
-//     name: string,
-//     value: string,
-//     onchange: (e: React.ChangeEvent<HTMLInputElement>) => void
-// }
-
 export default function PasswordInput({ name, value, onchange }: { name: string, value: string, onchange: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
     const [showPassword, setShowPassword] = useState(false)
     // const [userLogging, setUserLogging] = useState(false);

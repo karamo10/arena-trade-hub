@@ -5,28 +5,28 @@ import { ArrowRightStartOnRectangleIcon, TrashIcon, PencilSquareIcon, PlusCircle
 
 export default function AdminSideBar() {
   return (
-    <div className="w-18 sm:w-80 min-h-screen bg-neutral-50 relative rounded flex flex-col items-center">
-      <div className="w-[95%] sm:w-[100%] mt-5 flex flex-col flex-1 items-center justify-center">
-        <Link
+    <div className="w-18 sm:w-80 min-h-screen relative rounded flex flex-col items-center">
+      <div className="w-[95%] sm:w-[100%] mt-0 flex flex-col flex-1 items-center justify-center">
+        {/* <Link
           href={'/admin/addProducts'}
           className="flex items-center gap-1 py-2 px-2.5 bg-indigo-950 text-white font-normal rounded cursor-pointer"
         >
           <PlusCircleIcon className="w-5 h-5" />
-           {/* Add */}
-        </Link>
-        <Link
+           Add
+        </Link> */}
+        {/* <Link
           href={'/admin/editProducts'}
           className="mt-4 flex items-center gap-1 py-2 px-2.5 bg-indigo-950 text-white font-normal rounded cursor-pointer"
         >
           <PencilSquareIcon className="w-5 h-5" />
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={'/admin/editProducts'}
           className="mt-4 flex items-center gap-1 py-2 px-2.5 bg-indigo-950 text-white font-normal rounded cursor-pointer"
         >
           <TrashIcon className="w-5 h-5" />
-           {/* Del */}
-        </Link>
+           Del
+        </Link> */}
         <Link
           href={'/admin'}
           className="mt-4 flex items-center gap-1 py-2 px-2.5 bg-indigo-950 text-white font-normal rounded cursor-pointer"

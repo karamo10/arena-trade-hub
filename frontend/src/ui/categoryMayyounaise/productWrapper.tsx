@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { Product } from '@/types/product-data';
+import { Product } from '@/types/product-data-types';
 import ProductCard from '../productCard/productCard';
 
 export default function Wrapper({ mayonnaises }: { mayonnaises: Product[] }) {
