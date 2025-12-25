@@ -1,5 +1,6 @@
 import { getProductBySlug } from '@/services/api';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 export default async function ProductPage(props: {
   params: Promise<{ slug: string }>;
@@ -17,7 +18,9 @@ export default async function ProductPage(props: {
   return (
     <div className="flex justify-center py-4 relative">
       <div className="flex flex-col gap-2 items-center md:flex-row h-[400px] bg-red800">
-        <img
+        <Image
+          width={200}
+          height={200}
           src={product.image_url}
           alt={product.name}
           className="w-[200px] h-[200px] mb-2 md:w-[300px] md:h-[300px] object-cover rounded-md"

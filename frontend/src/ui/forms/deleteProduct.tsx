@@ -51,7 +51,7 @@ export default function DeleteProductForm() {
     <div className="grid grid-cols-3 gap-2 p-2">
       {products.map((product) => (
         <div key={product.id}>
-          <DeleteProductCard
+          <DeleteProductCard 
             product={product}
             onDelete={() => handleDelete(product.id)}
           />
